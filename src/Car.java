@@ -25,6 +25,31 @@ public class Car {
 		this.brake = brake;
 	}
 
+	public int getThottle(double speedLimit,double nextSpeedLimit, double distance){
+		if (nextSpeedLimit==0)
+			nextSpeedLimit=speedLimit;
+		if (distance==0){
+			distance =1000;
+		}
+		if (distance<speedLimit*2/3)
+			if (speed>nextSpeedLimit)
+				return -100;
+			else 
+				return 10;//((int)nextSpeedLimit - (int)speed)/3;
+		
+		if (speedLimit-speed>speedLimit/60){
+			if (speedLimit>50)
+				if (speed<50 )
+					return 75;
+				else {
+					return 18;
+				}
+				else
+			return 20;
+		}
+		return ((int)speedLimit - (int)speed)/10;
+	}
+	
 	public void update (String [] attributes){
 		speed = Double.parseDouble(attributes[0].split(" ")[1]);
 		distance = Double.parseDouble(attributes[1].split(" ")[1]);
