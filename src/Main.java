@@ -24,6 +24,7 @@ public class Main {
 		throttle = 100;
 		
 		int oldLimit = 0;
+		boolean isMeasuring = false;
 		
 		while (a) {
 			car.update(server.readLine(3));
@@ -36,6 +37,17 @@ public class Main {
 				oldLimit = (int)limits.currentLimit;
 			}
 			int optimal  = car.getThottle(limits.currentLimit,limits.nextLimit,limits.distance);
+			/*int optimal;
+			if (car.speed<130 && !isMeasuring){
+				optimal = 100;
+			}
+			else{
+				if (car.speed==0)
+					break;
+				optimal = -100;
+				isMeasuring = true;
+				System.out.println(car.time);
+			}*/
 			
 			server.writeLine(T + (optimal>0?optimal:0));
 			server.writeLine(B + (optimal<0?-optimal:0));

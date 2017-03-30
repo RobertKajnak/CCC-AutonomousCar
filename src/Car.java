@@ -31,11 +31,13 @@ public class Car {
 		if (distance==0){
 			distance =1000;
 		}
-		if (distance<speedLimit*2/3)
+		if (distance<(speed-nextSpeedLimit)*(speed-nextSpeedLimit)/3.6/3.6*5.833 + (speed) * 0.2/1.05/*speedLimit*2/3*/)
 			if (speed>nextSpeedLimit)
 				return -100;
-			else 
-				return 10;//((int)nextSpeedLimit - (int)speed)/3;
+			else {
+				System.out.println("Distance remaining:" + distance);
+				return 0;//((int)nextSpeedLimit - (int)speed)/3;
+			}
 		
 		if (speedLimit-speed>speedLimit/60){
 			if (speedLimit>50)
